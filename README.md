@@ -80,7 +80,7 @@ Depending on the classification:
 8. Extracted information and processing results are stored in PostgreSQL.
 9. Workflow state and execution information are maintained through PostgreSQL checkpointing.
 ---
-
+<img width="1919" height="1000" alt="agents_dashboard" src="https://github.com/user-attachments/assets/7e0805e0-a77a-483f-afaa-57a084efd791" />
 To Run :
 1. clone this repo
 2. create a V_environment
