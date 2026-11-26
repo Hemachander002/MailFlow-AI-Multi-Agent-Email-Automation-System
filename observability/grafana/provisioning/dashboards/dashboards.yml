@@ -1,0 +1,10 @@
+apiVersion: 1
+providers:
+  - name: Company Automation
+    orgId: 1
+    folder: Company Automation
+    type: file
+    disableDeletion: false
+    editable: true
+    options:
+      path: /var/lib/grafana/dashboards

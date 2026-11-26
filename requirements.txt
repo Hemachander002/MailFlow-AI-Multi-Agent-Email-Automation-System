@@ -1,0 +1,16 @@
+fastapi==0.115.12
+uvicorn[standard]==0.34.0
+sqlalchemy==2.0.38
+psycopg[binary]==3.2.5
+pydantic-settings==2.7.1
+google-api-python-client==2.161.0
+google-auth-oauthlib==1.2.1
+google-auth-httplib2==0.2.0
+google-genai==1.5.0
+httpx==0.28.1
+pymupdf==1.25.3
+langgraph==0.2.74
+prometheus-client==0.21.1
+opentelemetry-api==1.30.0
+opentelemetry-sdk==1.30.0
+opentelemetry-exporter-otlp==1.30.0
