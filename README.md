@@ -80,7 +80,6 @@ Depending on the classification:
 8. Extracted information and processing results are stored in PostgreSQL.
 9. Workflow state and execution information are maintained through PostgreSQL checkpointing.
 ---
-<img width="1919" height="1000" alt="agents_dashboard" src="https://github.com/user-attachments/assets/7e0805e0-a77a-483f-afaa-57a084efd791" />
 To Run :
 1. clone this repo
 2. create a V_environment
@@ -119,6 +118,15 @@ To Run :
     14. run the model in OLLAMA
         
   9. keep the models in the paths instructed in the scripts
+
+
+
+
+
+
+
+
+<img width="1919" height="1000" alt="agents_dashboard" src="https://github.com/user-attachments/assets/7e0805e0-a77a-483f-afaa-57a084efd791" />
   10. setup google gemini api
   11. setup google drive , gmail api on google cloud console and make sure you add your email in developers list
   12. Once you setup all these , run the run_email_workflow.py 
