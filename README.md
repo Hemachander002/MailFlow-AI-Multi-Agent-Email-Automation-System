@@ -13,10 +13,8 @@
 | Email Integration | Gmail API |
 | File Storage | Google Drive API |
 | Database | PostgreSQL |
-| Workflow Persistence | LangGraph PostgreSQL Checkpointer |
 | Monitoring | Prometheus |
 | Visualization | Grafana |
-| Distributed Tracing | OpenTelemetry, Tempo |
 | Containerization | Docker, Docker Compose |
 
 An AI-powered email automation system that uses multiple specialized agents to classify incoming emails, process invoice and job application attachments, and automate downstream workflows.
