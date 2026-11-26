@@ -49,14 +49,15 @@ To Run :
     7. save the PEFT adapter and tokenizer
     8. Set up llama.cpp repo
     9. The important tools for our workflow are:
-- convert_hf_to_gguf.py — converts a Hugging Face model into GGUF format.
-- llama-quantize — quantizes the converted model.
-- llama-cli — runs a model locally for testing.
+      - convert_hf_to_gguf.py — converts a Hugging Face model into GGUF format.
+      - llama-quantize — quantizes the converted model.
+      - llama-cli — runs a model locally for testing.
     10. merge the local model with the adapters
     11. convert the merged model to gguf format
     12. quantize the gguf model
     13. test it with llama-cli before integrating with ollama
     14. run the model in OLLAMA
+        
   9. keep the models in the paths instructed in the scripts
 
 ---
