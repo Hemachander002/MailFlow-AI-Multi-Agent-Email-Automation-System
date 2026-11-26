@@ -18,49 +18,6 @@
 | Containerization | Docker, Docker Compose |
 
 An AI-powered email automation system that uses multiple specialized agents to classify incoming emails, process invoice and job application attachments, and automate downstream workflows.
-
-To Run :
-1. clone this repo
-2. create a V_environment
-3. setup ur .env file based on ur configuration
-4. change the config values in docker-compose.yaml file based on ur config
-5. run docker compose
-6. run this docker exec -i ai-email-automation-postgres-1 psql -U POSTGRES_USER_NAME -d DB_NAME < init.sql
-7. verify the tables in DBeaver or any other similar softwares
-8. you have to train open source language model ( i chose Qwen/Qwen2.5-3B-Instruct) on https://www.kaggle.com/datasets/osamahosamabdellatif/high-quality-invoice-images-for-ocr this dataset
-   1. loaded Qwen2.5-3B-Instruct using 4-bit NF4 quantization.
-   2. Attach LoRA adapters
-   3. convert the conversations into token IDs using Qwen's own chat template
-   4. set MAX_LENGTH = 2048
-   5. My Training Configuration ( for reference )
-        Epochs	3
-        Batch size	1
-        Gradient accumulation	8
-        Effective batch size	8
-        Learning rate	0.0002
-        Weight decay	0.01
-        Warmup ratio	0.03
-        Scheduler	Cosine
-        Optimizer	Paged AdamW 8-bit
-        Evaluation	Every epoch
-    6. It took me 5 hours for fine-tuning [GPU : T4]
-    7. save the PEFT adapter and tokenizer
-    8. Set up llama.cpp repo
-    9. The important tools for our workflow are:
-      - convert_hf_to_gguf.py — converts a Hugging Face model into GGUF format.
-      - llama-quantize — quantizes the converted model.
-      - llama-cli — runs a model locally for testing.
-    10. merge the local model with the adapters
-    11. convert the merged model to gguf format
-    12. quantize the gguf model
-    13. test it with llama-cli before integrating with ollama
-    14. run the model in OLLAMA
-        
-  9. keep the models in the paths instructed in the scripts
-  10. setup google gemini api
-  11. setup google drive , gmail api on google cloud console and make sure you add your email in developers list
-  12. Once you setup all these , run the run_email_workflow.py 
-
 ---
 ## Overview
 Managing emails containing invoices and job applications can involve repetitive manual work, including identifying email types, downloading attachments, extracting information, and storing results.
@@ -124,3 +81,44 @@ Depending on the classification:
 9. Workflow state and execution information are maintained through PostgreSQL checkpointing.
 ---
 
+To Run :
+1. clone this repo
+2. create a V_environment
+3. setup ur .env file based on ur configuration
+4. change the config values in docker-compose.yaml file based on ur config
+5. run docker compose
+6. run this docker exec -i ai-email-automation-postgres-1 psql -U POSTGRES_USER_NAME -d DB_NAME < init.sql
+7. verify the tables in DBeaver or any other similar softwares
+8. you have to train open source language model ( i chose Qwen/Qwen2.5-3B-Instruct) on https://www.kaggle.com/datasets/osamahosamabdellatif/high-quality-invoice-images-for-ocr this dataset
+   1. loaded Qwen2.5-3B-Instruct using 4-bit NF4 quantization.
+   2. Attach LoRA adapters
+   3. convert the conversations into token IDs using Qwen's own chat template
+   4. set MAX_LENGTH = 2048
+   5. My Training Configuration ( for reference )
+        Epochs	3
+        Batch size	1
+        Gradient accumulation	8
+        Effective batch size	8
+        Learning rate	0.0002
+        Weight decay	0.01
+        Warmup ratio	0.03
+        Scheduler	Cosine
+        Optimizer	Paged AdamW 8-bit
+        Evaluation	Every epoch
+    6. It took me 5 hours for fine-tuning [GPU : T4]
+    7. save the PEFT adapter and tokenizer
+    8. Set up llama.cpp repo
+    9. The important tools for our workflow are:
+      - convert_hf_to_gguf.py — converts a Hugging Face model into GGUF format.
+      - llama-quantize — quantizes the converted model.
+      - llama-cli — runs a model locally for testing.
+    10. merge the local model with the adapters
+    11. convert the merged model to gguf format
+    12. quantize the gguf model
+    13. test it with llama-cli before integrating with ollama
+    14. run the model in OLLAMA
+        
+  9. keep the models in the paths instructed in the scripts
+  10. setup google gemini api
+  11. setup google drive , gmail api on google cloud console and make sure you add your email in developers list
+  12. Once you setup all these , run the run_email_workflow.py 
